@@ -23,8 +23,6 @@ import org.hibernate.SessionFactory;
 @PropertySource(value = { "classpath:application.properties" })
 @ComponentScans(value = { @ComponentScan("com.grimer.customertracker.dao"),
 	      				  @ComponentScan("com.grimer.customertracker.service") })
-//@EnableJpaAuditing
-//@EnableJpaRepositories(basePackages = { "com.grimer.customertracker" }, transactionManagerRef = "jpaTransactionManager")
 public class HibernateConfig {
  
 	@Autowired
