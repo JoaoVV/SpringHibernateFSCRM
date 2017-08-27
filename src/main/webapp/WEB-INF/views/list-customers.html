@@ -48,6 +48,7 @@
 				<tr>
 					<th>First Name</th>
 					<th>Last Name</th>
+					<th>Age</th>
 					<th>Email</th>
 					<th>Country</th>
 					<th> Action </th>
@@ -56,6 +57,7 @@
 				<tr th:each="tempCustomer : ${customers}">
 					<td th:text="${tempCustomer.firstName}"> Grimer </td>
 					<td th:text="${tempCustomer.lastName}"> Muk</td>
+					<td th:text="${tempCustomer.age}"> 15</td>
 					<td th:text="${tempCustomer.email}"> grimer@gmail.com</td>
 					
 					<td th:if="${tempCustomer.country != null}" th:text="${tempCustomer.country}"> Portugal</td>

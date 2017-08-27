@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -35,6 +37,19 @@ public class Customer {
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="age")
+	private int age;
+	
+	@Min(value=1, message="age must be equal or higher than 1")
+	@Max(value=200, message="No one has lived that long!")
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	@Column(name="country")
 	private String country;
 	

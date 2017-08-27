@@ -43,18 +43,20 @@
 					<table>
 						<tbody>
 							<tr>
-								<td><label for="firstName">First Name</label></td>
+								<td><label class="control-label" for="inputError">First Name</label></td>
 								<td><input type="text"
 										   id="firstName"	
 										   th:field="*{firstName}" 
-										   class="form-control"/></td>
+										   class="help-inline"/></td>
+								<td th:if="${#fields.hasErrors('firstName')}" 
+									th:errors="*{firstName}">First Name Error</td>
 							</tr>
 							<tr>
 								<td><label for="lastName">Last Name</label></td>
 								<td><input type="text"
 										   id="lastName"	 
 										   th:field="*{lastName}" 
-										   class="form-control"/></td>
+										   class="help-inline"/></td>
 								<td th:if="${#fields.hasErrors('lastName')}" 
 									th:errors="*{lastName}">Last Name Error</td>
 							</tr>
@@ -64,7 +66,17 @@
 								<td><input type="text"
 										   id="email"	
 										   th:field="*{email}" 
-										   class="form-control"/></td>
+										   class="help-inline"/></td>
+							</tr>
+							
+							<tr>
+								<td><label for="age">Age</label></td>
+								<td><input type="number"
+										   id="age"	
+										   th:field="*{age}" 
+										   class="help-inline"/></td>
+								<td th:if="${#fields.hasErrors('age')}" 
+									th:errors="*{age}">Age Error</td>
 							</tr>
 							
 							<tr>

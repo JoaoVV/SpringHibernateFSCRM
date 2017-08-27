@@ -30,6 +30,7 @@ CREATE TABLE `customer` (
   `last_name` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
+  `age` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -42,11 +43,11 @@ LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 
 INSERT INTO `customer` VALUES 
-	(1,'John','Doe1','JohnDoe1@gmail.com', NULL),
-	(2,'John','Doe2','JohnDoe2@gmail.com', NULL),
-	(3,'John','Doe3','JohnDoe3@gmail.com', NULL),
-	(4,'John','Doe4','JohnDoe4@gmail.com', NULL),
-	(5,'John','Doe5','JohnDoe5@gmail.com', NULL);
+	(1,'John','Doe1','JohnDoe1@gmail.com', NULL, 50),
+	(2,'John','Doe2','JohnDoe2@gmail.com', NULL, 25),
+	(3,'John','Doe3','JohnDoe3@gmail.com', NULL, 75),
+	(4,'John','Doe4','JohnDoe4@gmail.com', NULL, 100),
+	(5,'John','Doe5','JohnDoe5@gmail.com', NULL, 150);
 
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
