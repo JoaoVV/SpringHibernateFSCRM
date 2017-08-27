@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    th:with="lang=${#locale.language}" th:lang="${lang}">
+
+<head>
+<title>Form</title>
+
+	<link th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" />
+	<link th:href="@{/resources/css/starter-template.css}" rel="stylesheet"/>
+	<script th:src="@{/resources/js/jquery-2.1.4.min.js}" type="text/javascript"></script>
+	<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" th:href="@{/}"><b>CRM - Customer Relationship Manager</b></a>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+	
+	<div class="container">
+		<h3> Save Customer </h3>
+			
+		<form th:action="@{/saveCustomer}" 
+			  th:object="${customer}" 
+			  method="POST">
+			  
+			<div class="form-group">
+					
+				<input type="hidden" th:field="*{id}"></input>
+					
+					<table>
+						<tbody>
+							<tr>
+								<td><label for="firstName">First Name</label></td>
+								<td><input type="text"
+										   id="firstName"	
+										   th:field="*{firstName}" 
+										   class="form-control"/></td>
+							</tr>
+							<tr>
+								<td><label for="lastName">Last Name</label></td>
+								<td><input type="text"
+										   id="lastName"	 
+										   th:field="*{lastName}" 
+										   class="form-control"/></td>
+							</tr>
+							<tr>
+								<td><label for="email">Email</label></td>
+								<td><input type="text"
+										   id="email"	
+										   th:field="*{email}" 
+										   class="form-control"/></td>
+							</tr>
+							
+							<tr>
+								<td><input type="submit" 
+									   	   class="btn btn-success"
+									   	   value="Save"></td>
+										   
+								<td><a type="button" 
+								       class="btn btn-danger" 
+								   	   th:href="@{/list}">Cancel</a></td>
+							</tr>
+						</tbody>
+								
+					</table>
+				</div>
+				
+			</form>
+			
+			<div style="clear; both; "></div>
+	</div>
+	
+	
+</body>
+</html>

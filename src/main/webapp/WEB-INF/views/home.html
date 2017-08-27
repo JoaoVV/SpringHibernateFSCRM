@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+<title>Home</title>
+
+<link th:href="@{/resources/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/resources/css/starter-template.css}" rel="stylesheet"/>
+<script th:src="@{/resources/js/jquery-2.1.4.min.js}" type="text/javascript"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+
+
+</head>
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="brand"><b>Customer Relationship Manager</b></span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+    
+      <p class="navbar-text navbar-right">Navigate to the
+      	 <a th:href="@{/list}" class="navbar-link">Customer List</a>
+      </p>
+	
+    </div> 
+    
+    <footer class="footer">
+      	<div class="container">
+        	<p class="text-muted"><b>Just a simple, sample full stack application, using spring, hibernate,
+        		thymeleaf, mysql and bootstrap.</b></p>
+        </div>
+    </footer>
+
+</body>
+</html>
