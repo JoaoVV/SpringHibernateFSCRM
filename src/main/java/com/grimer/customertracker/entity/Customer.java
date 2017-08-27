@@ -1,11 +1,17 @@
 package com.grimer.customertracker.entity;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="customer")
@@ -17,22 +23,60 @@ public class Customer {
 	private int id;
 	
 	@Column(name="first_name")
+	@NotNull(message="is required")
+	@Size(min=1, max=30, message="is required")
 	private String firstName;
 	
 	@Column(name="last_name")
+	@NotNull(message="is required")
+	@Size(min=1, max=30, message="is required")
 	private String lastName;
 	
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="country")
+	private String country;
+	
+	@Transient
+	private Map<String, String> countryOptions;
+
 	public Customer() {
+		countryOptions = new LinkedHashMap<>();
+		initCountryOptions();
+	}
+
+	//To Refactor: Put into proper Countries DB table
+	private void initCountryOptions() {
+		if(countryOptions != null) {
+			countryOptions.put("PT", "Portugal");
+			countryOptions.put("ES", "Spain");
+			countryOptions.put("FR", "France");
+			countryOptions.put("DE", "Germany");
+			countryOptions.put("US", "USA");
+			countryOptions.put("BR", "Brasil");
+			countryOptions.put("PL", "Poland");
+			countryOptions.put("UK", "England");
+		}
 		
+	}
+
+	public Map<String, String> getCountryOptions() {
+		return countryOptions;
 	}
 
 	public int getId() {
 		return id;
 	}
 
+	public String getCountry() {
+		return country;
+	}
+	
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}

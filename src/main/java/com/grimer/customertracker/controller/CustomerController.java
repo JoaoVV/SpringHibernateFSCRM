@@ -2,10 +2,17 @@ package com.grimer.customertracker.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +22,14 @@ import com.grimer.customertracker.service.CustomerService;
 
 @Controller
 public class CustomerController {
+	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+		
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
 
 	@Autowired
 	private CustomerService customerService;
@@ -47,7 +62,12 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/saveCustomer")
-	public String saveCustomer(@ModelAttribute("customer") Customer customer) {
+	public String saveCustomer(ModelMap model, @ModelAttribute("customer") @Valid Customer customer,
+							   BindingResult theBindingResult) {
+		
+		if(theBindingResult.hasErrors()) {
+			return "customer-form.html";
+		}
 		
 		customerService.saveCustomer(customer);
 		

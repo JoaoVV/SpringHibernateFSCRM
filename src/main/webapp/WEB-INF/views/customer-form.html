@@ -55,13 +55,28 @@
 										   id="lastName"	 
 										   th:field="*{lastName}" 
 										   class="form-control"/></td>
+								<td th:if="${#fields.hasErrors('lastName')}" 
+									th:errors="*{lastName}">Last Name Error</td>
 							</tr>
+							
 							<tr>
 								<td><label for="email">Email</label></td>
 								<td><input type="text"
 										   id="email"	
 										   th:field="*{email}" 
 										   class="form-control"/></td>
+							</tr>
+							
+							<tr>
+								<td>
+									<select class="dropdown" 
+										    th:field="*{country}"  
+										    id="country">
+    									<option th:each="country : ${customer.countryOptions}" 
+    											th:value="${country.key}" 
+    											th:text="${country.value}"></option>
+									</select>
+								</td>
 							</tr>
 							
 							<tr>
